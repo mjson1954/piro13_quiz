@@ -1,0 +1,59 @@
+{% extends 'goologin/login.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            list-style: none;
+        }
+
+        form ul > li {
+            display: inline-flex;
+        }
+
+        tr {
+            border-bottom: 5px solid rebeccapurple;
+        }
+
+    </style>
+</head>
+{% block content %}
+<body>
+<div id="context">
+    <h1>퀴즈 리스트</h1>
+    <p>현재 플레이어의 등록된 퀴즈를 보여주는 페이지 입니다.</p>
+    <p>아무말 아무말 아무말 아무말 아무말 아무말 아무말 아무말 아무말</p>
+
+    <h4>현재 사용자: {{ user.username }}</h4>
+    {% for quiz in quizs %}
+    <div id="quiz">
+        <div class="title">
+            <br/><br/>
+            <p>제목: {{ quiz.title }}</p>
+
+        </div>
+        <div class="inline">
+            <p>출제자: {{ quiz.madeby }}</p>
+
+        </div>
+        {% if quiz.madeby == user.username %}
+        <a href="{% url 'quiz:delete_view' quiz.pk%}">퀴즈 삭제</a>
+        {% else %}
+        <a href="{% url 'quiz:solve_quiz' quiz.pk%}">퀴즈 풀기</a>
+        {% endif %}
+        <div class="inline">
+
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+</body>
+{% endblock %}
+
+</html>

@@ -1,0 +1,41 @@
+{% extends 'goologin/login.html' %}
+
+{% block content%}
+<body>
+<div>제목:{{ quiz.title }}</div>
+<div>
+    출제자: {{ quiz.madeby }}<br/><br/>
+
+    문제 번호: {{ quiz.pk }}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        푸는사람: {{form.madeby}}<br/>
+        <!-- 1번 문제  -->
+        Q1: {{quiz.Q1}} <br>
+        {{form.Q1ans}}
+        <hr>
+        <!-- 2번 문제  -->
+        Q2: {{quiz.Q2}} <br>
+        {{form.Q2ans}}
+        <hr>
+        <!-- 3번 문제  -->
+        Q3: {{quiz.Q3}} <br>
+        {{form.Q3ans}}
+        <hr>
+        <!-- 4번 문제  -->
+        Q4: {{quiz.Q4}} <br>
+        {{form.Q4ans}}
+        <hr>
+        <!-- 5번 문제  -->
+        Q5: {{quiz.Q5}} <br>
+        {{form.Q5ans}}
+        <hr>
+        <br/>
+        <input id="submit_btn" type="submit">
+    </form>
+
+
+</div>
+</body>
+{% endblock %}

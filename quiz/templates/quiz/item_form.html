@@ -1,0 +1,64 @@
+{% extends 'goologin/login.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            list-style: none;
+        }
+
+        /* 라디오 버튼 가로축으로 늘어놓기 */
+        form ul > li {
+            display: inline-flex;
+        }
+
+        /* 퀴즈 마다 아래쪽 수평선  */
+        tr {
+            border-bottom: 5px solid rebeccapurple;
+        }
+
+    </style>
+</head>
+{% block content %}
+<body>
+
+    <h1 class="menu_title">퀴즈 생성하기</h1>
+
+    <P>|출제자:<!--{{유저아이디}}--></P>
+    <hr>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        Title: {{ form.title }} <br><br>
+        Username: {{ form.madeby }} <br><br>
+        <!-- 1번 문제  -->
+        Q1: {{form.Q1}} <br>
+        {{form.Q1pic}}
+        <hr>
+        <!-- 2번 문제  -->
+        Q2: {{form.Q2}} <br>
+        {{form.Q2pic}}
+        <hr>
+        <!-- 3번 문제  -->
+        Q3: {{form.Q3}} <br>
+        {{form.Q3pic}}
+        <hr>
+        <!-- 4번 문제  -->
+        Q4: {{form.Q4}} <br>
+        {{form.Q4pic}}
+        <hr>
+        <!-- 5번 문제  -->
+        Q5: {{form.Q5}} <br>
+        {{form.Q5pic}}
+        <hr>
+        <br/>
+        <input id="submit_btn" type="submit">
+    </form>
+
+</body>
+{% endblock %}
+</html>

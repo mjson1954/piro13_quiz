@@ -1,0 +1,8 @@
+{% extends 'goologin/login.html' %}
+
+{% block content %}
+{% for answer in item.answers.all %}
+    <div>{{answer.madeby}}</div>
+
+{% endfor %}
+{% endblock %}
